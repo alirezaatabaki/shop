@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<table class="table table-light">
+    <thead>
+    <tr>
+        <th scope="col">شماره</th>
+        <th scope="col">کالا</th>
+        <th scope="col">تعداد</th>
+        <th scope="col">قیمت واحد</th>
+        <th scope="col">قیمت کل</th>
+        <th scope="col">حذف</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in order.items.all %}
+    <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td><a class="text-muted" href="{{ item.product.get_absolute_url }}">{{ item.product }}</a></td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.get_cost }}</td>
+{#        <td><a href="{% url 'cart:cart_remove' item.product.id %}">حذف</a></td>#}
+    </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="4"></td>
+        <td>جمع کل</td>
+        <td>{{ order.get_total_price }} تومان</td>
+    </tr>
+    </tbody>
+</table>
+    {% if order.paid is False%}
+        <a href="{% url 'orders:order-finalize' order.id %}" class="btn btn-primary">نهایی‌کردن خرید</a>
+    {% endif %}
+{% endblock %}

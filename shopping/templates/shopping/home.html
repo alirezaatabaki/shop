@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% load thumbnail %}
+
+{% block content%}
+    {% for category in categories %}
+        <div class="btn-group mb-2" style="direction: ltr;">
+            <a href="{{ category.get_absolute_url }}" class="btn btn-dark">{{ category.name }}</a>
+            <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+            <div class="dropdown-menu dropdown-menu-left">
+                {% for sub in category.subcategory.all %}
+                    <a class="dropdown-item" href="{{ sub.get_absolute_url }}">{{ sub.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+
+    <br/><br/><br/>
+
+    {% for product in products %}
+        <div class="card border-dark pt-3 ml-3 mr-3 mt-3" style="width: 18rem; display:inline-block">
+            {% thumbnail product.image "300x300" as img %}
+                <img src="{{ img.url }}" class="card-img-top pl-3 pr-3" width="150px" height="300px">
+            {% endthumbnail %}
+            <div class="card-body">
+                <a href="{{ product.get_absolute_url }}" class="card-title text-dark"> <hr>{{ product.name }}</a>
+            </div>
+        </div>
+    {% endfor %}
+
+    <br><br>
+
+    {% if products.has_other_pages %}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination" style="justify-content: center;">
+                {% if products.has_previous %}
+                        <li class="page-item ml-2"><a class="page-link text-dark rounded-bottom rounded-top" href="?page={{ products.previous_page_number }}">قبلی</a></li>
+                {% else %}
+                    <li class="disabled page-item ml-2" ><a class="page-link text-dark rounded-bottom rounded-top" href="">قبلی</a></li>
+                {% endif %}
+                {% for i in products.paginator.page_range %}
+                    {% if products.number == i %}
+                        <li class="disabled page-item"><span class="disabled page-link bg-dark text-light">{{ i }}</span></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link text-dark" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if products.has_next %}
+                    <li class="page-item mr-2"><a class="page-link text-dark rounded-bottom rounded-top" href="?page={{ products.next_page_number }}">بعدی</a></li>
+                {% else %}
+                    <li class="disabled page-item mr-2" ><a class="page-link text-dark rounded-bottom rounded-top" href="">بعدی</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+
+{% endblock %}

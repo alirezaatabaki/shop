@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<table class="table table-light">
+    <thead>
+    <tr>
+        <th scope="col">شماره</th>
+        <th scope="col">تاریخ ایجاد</th>
+        <th scope="col">آخرین ویرایش</th>
+        <th scope="col">قیمت کل</th>
+        <th scope="col">وضعیت پرداخت</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+            <tr>
+                <th scope="row">
+                    <a href="{% url "orders:order-detail" order.id %}">
+                        {{ forloop.counter }}
+                    </a>
+                </th>
+                <td>{{ order.created }}</td>
+                <td>{{ order.updated }}</td>
+                <td>{{ order.get_total_price }}</td>
+                <td>
+                    {% if order.paid is True %}
+                    موفق
+                    {% else %}
+                    ناموفق
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

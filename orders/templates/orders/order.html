@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h3>نهایی‌کردن خرید</h3>
+
+    <br/>
+
+    <p>قابل پرداخت:
+        {{ order.get_total_price }}
+        تومان
+    </p>
+
+    <br/>
+
+    <form action="{% url 'orders:order-coupon-apply' order.id %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="اعمال کد تخفیف">
+    </form>
+
+    <br/>
+
+    <form action="{% url 'orders:order-payment' order.id order.get_total_price %}" method="get">
+        <p><label>موفق باشه؟:<input type="checkbox" name="Status" value="OK" class="checkbox"/></label></p>
+        <input type="submit" value="پرداخت" class="btn btn-danger">
+    </form>
+{#    <a href="{% url 'orders:order-payment' order.id order.get_total_price %}" class="btn btn-primary">پرداخت</a>#}
+
+{% endblock %}

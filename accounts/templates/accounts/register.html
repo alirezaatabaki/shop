@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <p>صفحه‌ی ثبت‌نام</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="ثبت‌نام">
+    </form>
+{% endblock %}

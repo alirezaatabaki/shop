@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% comment %} {% block extra_headers %}{% endblock %} {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    {% include './_navbar.html' %}
+
+    <div class="jumbotron">
+        {% include './_messages.html' %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+            <small>
+                <p>شبکه‌های اجتماعی ما</p>
+            </small>
+            <a class="social-media-icon text-white-50" href="https://facebook.com/#">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a class="social-media-icon text-white-50" href="https://twitter.com/#">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a class="social-media-icon text-white-50" href="https://instagram.com/#">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a class="social-media-icon text-white-50" href="https://telegram.org/#">
+                <i class="fab fa-telegram-plane"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="{% static "js/jquery-3.4.0.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.bundle.js" %}"></script>
+    <script src="{% static "js/font-awesome.js" %}"></script>
+    <script src="{% static "js/main.js" %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
