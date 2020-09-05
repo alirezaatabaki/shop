@@ -7,10 +7,11 @@
     <p>{{ product.description }}</p>
 
     <br/><br/>
-
-    <form action="{% url 'cart:cart_add' product.id %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="افزودن به سبد خرید">
-    </form>
+    {% if product.available %}
+        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="افزودن به سبد خرید">
+        </form>
+    {% endif %}
 {% endblock %}

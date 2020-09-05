@@ -23,7 +23,6 @@ class Category(models.Model):
 
 class Product(models.Model):
     category = models.ManyToManyField(Category, related_name='products', verbose_name='دسته‌بندی',)
-    # category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE, verbose_name='دسته‌بندی')
     name = models.CharField(verbose_name='نام', max_length=200)
     slug = models.SlugField(verbose_name='اسلاگ', max_length=200, unique=True, allow_unicode=True)
     image = models.ImageField(verbose_name='تصویر', upload_to='products/%Y/%m/%d/')
