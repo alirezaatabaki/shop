@@ -29,7 +29,7 @@ def home(request, slug=None):
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
-    form = CartAddForm()
+    form = CartAddForm(product=product)
     context = {
         'product': product,
         'form': form

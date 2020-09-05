@@ -81,6 +81,7 @@ def verify(request):
         # if result.Status == 100:
         order = Order.objects.get(id=o_id)
         order.paid = True
+        order.update_database()
         order.save()
         messages.success(request, 'تراکنش با موفقیت انجام شد', 'success')
         return redirect('shopping:home')

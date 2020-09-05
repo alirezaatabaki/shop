@@ -26,6 +26,10 @@ class Order(models.Model):
             return int(total - discount_price)
         return total
 
+    def update_database(self):
+        for item in self.items.all():
+            item.update_database()
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
@@ -38,6 +42,9 @@ class OrderItem(models.Model):
 
     def get_cost(self):
         return self.price * self.quantity
+
+    def update_database(self):
+        self.product.update_quantity(sold_quantity=self.quantity)
 
 
 class Coupon(models.Model):
