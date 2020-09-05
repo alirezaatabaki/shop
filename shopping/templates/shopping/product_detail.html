@@ -7,10 +7,17 @@
     <p>{{ product.description }}</p>
 
     <br/><br/>
-
-    <form action="{% url 'cart:cart_add' product.id %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="افزودن به سبد خرید">
-    </form>
+    {% if product.available %}
+        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+            {% csrf_token %}
+            {% for error in form.quantity.errors %}
+                <p class="alert alert-info col-6">{{ error }}</p>
+            {% endfor %}
+            <label for="{{ form.quantity.id_for_label }}">{{ form.quantity.label }}</label>
+            {{ form.quantity }}
+            <input type="submit" value="افزودن به سبد خرید">
+        </form>
+    {% else %}
+        <p class="alert alert-warning col-6">موجودی این محصول به اتمام رسیده است</p>
+    {% endif %}
 {% endblock %}

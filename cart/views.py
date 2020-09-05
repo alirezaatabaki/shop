@@ -18,11 +18,17 @@ def cart_detail(request):
 def cart_add(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
-    form = CartAddForm(request.POST)
+    form = CartAddForm(request.POST, product=product)
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product, quantity=cd['quantity'])
-    return redirect('cart:cart_detail')
+        return redirect('cart:cart_detail')
+    else:
+        context = {
+            'product': product,
+            'form': form
+        }
+        return render(request, 'shopping/product_detail.html', context=context)
 
 
 def cart_remove(request, product_id):

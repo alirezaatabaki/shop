@@ -23,7 +23,6 @@ class Category(models.Model):
 
 class Product(models.Model):
     category = models.ManyToManyField(Category, related_name='products', verbose_name='دسته‌بندی',)
-    # category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE, verbose_name='دسته‌بندی')
     name = models.CharField(verbose_name='نام', max_length=200)
     slug = models.SlugField(verbose_name='اسلاگ', max_length=200, unique=True, allow_unicode=True)
     image = models.ImageField(verbose_name='تصویر', upload_to='products/%Y/%m/%d/')
@@ -32,6 +31,7 @@ class Product(models.Model):
     available = models.BooleanField(verbose_name='موجود', default=True)
     created = models.DateTimeField(verbose_name='تاریخ اضافه شدن', auto_now_add=True)
     updated = models.DateTimeField(verbose_name='آخرین تغییر', auto_now=True)
+    quantity = models.IntegerField(verbose_name=' تعداد موجودی', default=0)
 
     class Meta:
         ordering = ('name',)
@@ -43,3 +43,11 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('shopping:product_detail', args=[self.slug, ])
+
+    def update_quantity(self, sold_quantity):
+        self.quantity -= sold_quantity
+        if self.quantity > 0:
+            self.available = True
+        else:
+            self.available = False
+        self.save()
