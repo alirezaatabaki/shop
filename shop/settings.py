@@ -143,3 +143,9 @@ STATICFILES_DIRS = [
 ]
 AUTH_USER_MODEL = 'accounts.User'
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+
+REST_FRAMEWORK = {
+        'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
