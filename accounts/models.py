@@ -79,3 +79,16 @@ class User(AbstractBaseUser):
 
     def get_full_name(self):
         return self.first_name + ' ' + self.last_name
+
+
+class Address(models.Model):
+    address = models.TextField(verbose_name="آدرس")
+    user_fk = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='کاربر')
+    is_default = models.BooleanField(verbose_name='پیش‌فرض')
+
+    class Meta:
+        verbose_name = 'آدرس'
+        verbose_name_plural = 'آدرس‌ها'
+
+    def __str__(self):
+        return f'آدرس: {self.address} || کاربر: {self.user_fk}'
