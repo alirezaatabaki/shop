@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -41,3 +42,11 @@ def user_register(request):
 	else:
 		form = UserRegistrationForm()
 	return render(request, 'accounts/register.html', {'form':form})
+
+@login_required
+def user_detail(request):
+	addresses = request.user.address_set.all()
+	context = {
+		'addresses': addresses
+	}
+	return render(request, 'accounts/user_detail.html', context=context)
