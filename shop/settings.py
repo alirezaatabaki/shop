@@ -149,3 +149,12 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
+
+
+#Email backend setting
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'django.mapsabootcamp'
+EMAIL_HOST_PASSWORD = 'nudcas-8suczu-ripByq'
+EMAIL_PORT = 587
