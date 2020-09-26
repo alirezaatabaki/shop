@@ -2,9 +2,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.views.generic import CreateView
 
 from .forms import UserLoginForm, UserRegistrationForm
-from .models import User
+from .models import User, Address
 
 
 def user_login(request):
@@ -21,7 +22,7 @@ def user_login(request):
 				messages.error(request, 'ایمیل یا گذرواژه نادرست است', 'danger')
 	else:
 		form = UserLoginForm()
-	return render(request, 'accounts/login.html', {'form':form})
+	return render(request, 'accounts/login.html', {'form': form})
 
 
 def user_logout(request):
@@ -41,7 +42,8 @@ def user_register(request):
 			return redirect('shopping:home')
 	else:
 		form = UserRegistrationForm()
-	return render(request, 'accounts/register.html', {'form':form})
+	return render(request, 'accounts/register.html', {'form': form})
+
 
 @login_required
 def user_detail(request):
@@ -50,3 +52,16 @@ def user_detail(request):
 		'addresses': addresses
 	}
 	return render(request, 'accounts/user_detail.html', context=context)
+
+
+class AddressCreate(CreateView):
+	model = Address
+	fields = ['address', 'is_default']
+	template_name = 'accounts/add_address.html'
+	success_url = '/accounts/detail/'
+
+	def form_valid(self, form):
+		self.object = form.save(commit=False)
+		self.object.user_fk = self.request.user
+		self.object.save()
+		return super().form_valid(form)
