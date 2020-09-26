@@ -8,5 +8,6 @@ urlpatterns = [
 	path('logout/', views.user_logout, name='logout'),
 	path('register/', views.user_register, name='register'),
 	path('detail/', views.user_detail, name='detail'),
-	path('add-address/', views.AddressCreate.as_view(), name='add-address')
+	path('add-address/', views.AddressCreate.as_view(), name='add-address'),
+	path('edit-address/<int:pk>', views.AddressUpdate.as_view(), name='edit-address'),
 ]
