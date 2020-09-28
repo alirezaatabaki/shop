@@ -62,3 +62,23 @@ class UserPasswordChangeSerializer(serializers.ModelSerializer):
         instance.set_password(validated_data['password'])
         instance.save()
         return instance
+
+class ResetPasswordConfirmSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Reset User Password
+    """
+    password_confirmation = serializers.CharField(max_length=150,label='تکرار پسورد')
+    class Meta:
+        model = User
+        fields = ['email', 'password', 'password_confirmation']
+
+    def validate(self,data):
+        if data['password_confirmation'] != data['password']:
+            raise serializers.ValidationError({'password': 'Password must match'})
+        return data
+
+    def update(self, instance, validated_data):
+        instance.set_password(validated_data['password'])
+        instance.is_active = True
+        instance.save()
+        return instance
