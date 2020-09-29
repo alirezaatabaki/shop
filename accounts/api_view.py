@@ -38,7 +38,7 @@ class ChangePassword(APIView):
     API to Change user's password with JWT Token
     """
     permission_classes = [IsAuthenticated]
-    serializer_class = UserPasswordChangeSerializer
+    # serializer_class = UserPasswordChangeSerializer
     def put(self,request):
         try:
             user = User.objects.get(email=request.data['email'])
@@ -60,8 +60,6 @@ class ResetPassword(APIView):
             user = User.objects.get(email=request.data['email'])
         except:
             return Response({"message":"USER NOT FOUND"})
-        user.is_active = False
-        user.save()
         token = account_activation_token.make_token(user)
         ActivationToken.objects.create(user=user,token=token)
         mail_subject = 'فراموشی رمز عبور'
