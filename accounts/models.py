@@ -79,3 +79,12 @@ class User(AbstractBaseUser):
 
     def get_full_name(self):
         return self.first_name + ' ' + self.last_name
+
+
+
+class ActivationToken(models.Model):
+    """
+    This Model is for saving Activation Token until activation is done
+    """
+    user = models.OneToOneField(User, related_name= 'activation', on_delete=models.CASCADE)
+    token = models.CharField(max_length=255)

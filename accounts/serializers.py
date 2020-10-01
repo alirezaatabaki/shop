@@ -1,6 +1,12 @@
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode
+from django.core.mail import EmailMessage
+
 from rest_framework import serializers
 
-from .models import User
+from .models import User, ActivationToken
+from . tokens import account_activation_token
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
@@ -24,5 +30,54 @@ class UserCreateSerializer(serializers.ModelSerializer):
         password = validated_data['password']
         user = User(email=email)
         user.set_password(password)
+        user.is_active = False
         user.save()
+        token = account_activation_token.make_token(user)
+        ActivationToken.objects.create(user=user,token=token)
+        mail_subject = 'فعال سازی اکانت'
+        message = f'your token is {token}'
+        to_email = email
+        email = EmailMessage(
+            subject= mail_subject, body= message, to= [to_email]
+        )
+        email.send()
         return validated_data
+
+
+class UserPasswordChangeSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Update User Password
+    """
+    password_confirmation = serializers.CharField(max_length=150,label='تکرار پسورد')
+    class Meta:
+        model = User
+        fields = ['email', 'password', 'password_confirmation']
+
+    def validate(self,data):
+        if data['password_confirmation'] != data['password']:
+            raise serializers.ValidationError({'password': 'Password must match'})
+        return data
+
+    def update(self, instance, validated_data):
+        instance.set_password(validated_data['password'])
+        instance.save()
+        return instance
+
+class ResetPasswordConfirmSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Reset User Password
+    """
+    password_confirmation = serializers.CharField(max_length=150,label='تکرار پسورد')
+    class Meta:
+        model = User
+        fields = ['email', 'password', 'password_confirmation']
+
+    def validate(self,data):
+        if data['password_confirmation'] != data['password']:
+            raise serializers.ValidationError({'password': 'Password must match'})
+        return data
+
+    def update(self, instance, validated_data):
+        instance.set_password(validated_data['password'])
+        instance.save()
+        return instance
