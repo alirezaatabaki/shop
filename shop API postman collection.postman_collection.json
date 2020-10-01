@@ -1,0 +1,522 @@
+{
+	"info": {
+		"_postman_id": "c1ffb4c5-1672-4f49-bea8-a09c59e416da",
+		"name": "shop API postman collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/category/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"category",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get categories",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/category/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 29 Sep 2020 07:48:52 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "434"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"is_sub\": false,\n        \"name\": \"لپ\\u200cتاپ\",\n        \"sub_category\": [\n            {\n                \"name\": \"ASUS\",\n                \"id\": 6\n            },\n            {\n                \"name\": \"Lenovo\",\n                \"id\": 5\n            },\n            {\n                \"name\": \"اچ\\u200cپی\",\n                \"id\": 7\n            }\n        ]\n    },\n    {\n        \"is_sub\": false,\n        \"name\": \"موبایل\",\n        \"sub_category\": [\n            {\n                \"name\": \"اپل\",\n                \"id\": 4\n            },\n            {\n                \"name\": \"جی\\u200cال\\u200cایکس\",\n                \"id\": 11\n            },\n            {\n                \"name\": \"سامسونگ\",\n                \"id\": 3\n            }\n        ]\n    },\n    {\n        \"is_sub\": false,\n        \"name\": \"پوشاک\",\n        \"sub_category\": [\n            {\n                \"name\": \"تی\\u200cشرت\",\n                \"id\": 9\n            },\n            {\n                \"name\": \"جوراب\",\n                \"id\": 12\n            },\n            {\n                \"name\": \"کفش\",\n                \"id\": 10\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Products",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/products/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"products",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 29 Sep 2020 08:01:38 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2577"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"name\": \"N56VZ\",\n        \"image\": \"http://127.0.0.1:8000/media/products/2020/08/30/asus-n56vz-a-%D9%84%D9%BE-%D8%AA%D8%A7%D9%BE-%D8%A7%DB%8C%D8%B3%D9%88%D8%B3_m9ACN92.jpg\",\n        \"description\": \"خفن\\u200cترین لپ\\u200cتاپ دنیا\",\n        \"price\": 3200000,\n        \"available\": false,\n        \"quantity\": 0,\n        \"category\": [\n            {\n                \"name\": \"ASUS\",\n                \"id\": 6\n            },\n            {\n                \"name\": \"لپ\\u200cتاپ\",\n                \"id\": 2\n            }\n        ]\n    },\n    {\n        \"name\": \"آیفون X\",\n        \"image\": \"http://127.0.0.1:8000/media/products/2020/08/30/apple-iphone-x-new-1.jpg\",\n        \"description\": \"الکی\\u200cگرون\\u200cترین گوشی دنیا\",\n        \"price\": 22000000,\n        \"available\": false,\n        \"quantity\": 0,\n        \"category\": [\n            {\n                \"name\": \"اپل\",\n                \"id\": 4\n            },\n            {\n                \"name\": \"موبایل\",\n                \"id\": 1\n            }\n        ]\n    },\n    {\n        \"name\": \"تی\\u200cشرت راحت\",\n        \"image\": \"http://127.0.0.1:8000/media/products/2020/09/01/%D8%AA%DB%8C_%D8%B4%D8%B1%D8%AA_%D8%A7%D9%86%D8%A7%D8%B1%DA%86%D8%A7%D9%BE_%D8%B7%D8%B1%D8%AD_%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87_%D9%86%D9%88%DB%8C%D8%B3_%D9%85%D8%AF%D9%84_T03006.jpg\",\n        \"description\": \"با این تی\\u200cشرت خود را از خرید هر تی\\u200cشرت دیگری تا پایان عمر بی\\u200cنیاز کنید\",\n        \"price\": 93000,\n        \"available\": true,\n        \"quantity\": 11,\n        \"category\": [\n            {\n                \"name\": \"تی\\u200cشرت\",\n                \"id\": 9\n            },\n            {\n                \"name\": \"پوشاک\",\n                \"id\": 8\n            }\n        ]\n    },\n    {\n        \"name\": \"جی\\u200cال\\u200cایکس آریا\",\n        \"image\": \"http://127.0.0.1:8000/media/products/2020/09/01/01.jpg\",\n        \"description\": \"بازم تولید ملی ولی یه کم اقتدارش کمتره از شاهین\",\n        \"price\": 1200000,\n        \"available\": true,\n        \"quantity\": 1,\n        \"category\": [\n            {\n                \"name\": \"جی\\u200cال\\u200cایکس\",\n                \"id\": 11\n            },\n            {\n                \"name\": \"موبایل\",\n                \"id\": 1\n            }\n        ]\n    },\n    {\n        \"name\": \"جی\\u200cال\\u200cایکس شاهین\",\n        \"image\": \"http://127.0.0.1:8000/media/products/2020/09/01/shahin-23.jpg\",\n        \"description\": \"تولید ملی اقتدار ملی\",\n        \"price\": 1500000,\n        \"available\": true,\n        \"quantity\": 2,\n        \"category\": [\n            {\n                \"name\": \"جی\\u200cال\\u200cایکس\",\n                \"id\": 11\n            },\n            {\n                \"name\": \"موبایل\",\n                \"id\": 1\n            }\n        ]\n    },\n    {\n        \"name\": \"کفش نیمه راحت\",\n        \"image\": \"http://127.0.0.1:8000/media/products/2020/09/01/%DA%A9%D9%81%D8%B4-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87-%D9%85%D8%AF%D9%84%DA%A9%D8%A7%D8%AA%D8%B1-%DA%A9%D9%81%D8%B4%DA%A9%D8%AA%D9%88%D9%86%DB%8C-%D8%B1%D8%A7%D8%AD%D8%AA-%D9%88-%D8%B7%D8%A8%DB%8C-373070-839249.jpg\",\n        \"description\": \"کفشی برا تمام فصول\",\n        \"price\": 300000,\n        \"available\": true,\n        \"quantity\": 12,\n        \"category\": [\n            {\n                \"name\": \"پوشاک\",\n                \"id\": 8\n            },\n            {\n                \"name\": \"کفش\",\n                \"id\": 10\n            }\n        ]\n    },\n    {\n        \"name\": \"گلکسی A3\",\n        \"image\": \"http://127.0.0.1:8000/media/products/2020/08/30/SM-A300F_001_Front_Blue_ji4VkTz.jpg\",\n        \"description\": \"بهترین گوشی دنیا\",\n        \"price\": 900000,\n        \"available\": true,\n        \"quantity\": 20,\n        \"category\": [\n            {\n                \"name\": \"سامسونگ\",\n                \"id\": 3\n            },\n            {\n                \"name\": \"موبایل\",\n                \"id\": 1\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Retrieve Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Retrieve Product",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/products/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 29 Sep 2020 08:02:40 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "288"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"گلکسی A3\",\n    \"image\": \"http://127.0.0.1:8000/media/products/2020/08/30/SM-A300F_001_Front_Blue_ji4VkTz.jpg\",\n    \"description\": \"بهترین گوشی دنیا\",\n    \"price\": 900000,\n    \"available\": true,\n    \"quantity\": 20,\n    \"category\": [\n        {\n            \"name\": \"سامسونگ\",\n            \"id\": 3\n        },\n        {\n            \"name\": \"موبایل\",\n            \"id\": 1\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "JWT Authentication",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"\",\n    \"password\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/token/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JWT refresh token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refresh\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/token/refresh/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"\",\n    \"confirmation_email\": \"\",\n    \"password\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/accounts/api/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activate user acoount",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"\",\n    \"token\":\"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/accounts/api/activate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"api",
+						"activate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change user password API",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjAxMzkwMzE4LCJqdGkiOiIyMWViZWRhOGY5OWY0MTY3Yjk2ZmQ0MWEyNzJlNWVkZiIsInVzZXJfaWQiOjEwfQ.gD8Fw4f6zU8NpaF0cXkP-HyqPo20bO8JcsSLH70CFZU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"\",\n    \"password\":\"\",\n    \"password_confirmation\":\"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/accounts/api/changepassword",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"api",
+						"changepassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset user password ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/accounts/api/resetpassword",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"api",
+						"resetpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password Confirmation API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"\",\n    \"token\":\"\",\n    \"password\":\"\",\n    \"password_confirmation\":\"\"\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/accounts/api/resetpasswordconfirm",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"api",
+						"resetpasswordconfirm"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
