@@ -3,7 +3,7 @@ Django==3.1.1
 django-extensions==3.0.9
 djangorestframework==3.11.1
 djangorestframework-simplejwt==4.4.0
-Pillow==7.2.0
+Pillow==9.0.1
 PyJWT==1.7.1
 pytz==2020.1
 six==1.15.0
